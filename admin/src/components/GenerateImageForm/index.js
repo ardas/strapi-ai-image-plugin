@@ -49,7 +49,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
   });
 
   const updateBalance = () => {
-    request(`/ai/image/balance`, { method: 'GET' })
+    request(`/strapi-ai-image-plugin/image/balance`, { method: 'GET' })
       .then((res) => {
         if(!_.isEmpty(res)) {
           setBalance(res.balance)
@@ -62,7 +62,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
 
   useEffect(() => {
     updateBalance()
-    request(`/ai/config/image`, { method: 'GET' })
+    request(`/strapi-ai-image-plugin/config/image`, { method: 'GET' })
       .then((res) => {
         if(!_.isEmpty(res)) {
           setFormData({
@@ -96,7 +96,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
   const handleSubmit = async (data) => {
     setLoading(true);
 
-    request(`/ai/image/generate`, {
+    request(`/strapi-ai-image-plugin/image/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: data,

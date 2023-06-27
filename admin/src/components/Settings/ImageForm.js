@@ -29,7 +29,7 @@ const ImageForm = ({ onSubmit }) => {
   });
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    request(`/ai/config/image`, { method: 'GET' })
+    request(`/strapi-ai-image-plugin/config/image`, { method: 'GET' })
       .then((res) => {
         if(!_.isEmpty(res)) {
           setFormData(res)
@@ -41,7 +41,7 @@ const ImageForm = ({ onSubmit }) => {
 
   const handleSubmit = (data) => {
     setLoading(true)
-    request(`/ai/config/image`, {
+    request(`/strapi-ai-image-plugin/config/image`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: data,
