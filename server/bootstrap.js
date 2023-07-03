@@ -1,4 +1,5 @@
 'use strict';
+const { pluginId } = require('./utils/pluginId');
 
 module.exports = async () => {
   try {
@@ -8,7 +9,7 @@ module.exports = async () => {
         section: 'plugins',
         displayName: 'Generate AI image.',
         uid: 'generate',
-        pluginName: 'ai-image-generation',
+        pluginName: pluginId,
       },
     ];
     await strapi.admin.services.permission.actionProvider.registerMany(actions);
