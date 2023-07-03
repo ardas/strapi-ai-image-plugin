@@ -181,7 +181,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
                           </Tooltip>} />
                       </Box>
                       <Box padding={2} hasRadius shadow="tableShadow">
-                        <Select label="Style" id={"Style"} value={values.style} onChange={(value) => {
+                        <Select label="Style" id={"style"} value={values.style} onChange={(value) => {
                           handleChange({
                             target: { name: 'style', value },
                           });
@@ -208,7 +208,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
                       </Box>
                     </GridLayout>
                     <Box padding={2} hasRadius shadow="tableShadow">
-                      <Textarea onChange={handleChange} hint="Separate tokens by comma" label={"Prompt"} id={"Prompt"} name="prompt" error={errors.prompt}>{values.prompt}</Textarea>
+                      <Textarea onChange={handleChange} hint="Separate tokens by comma" label={"Prompt"} id={"prompt"} name="prompt" error={errors.prompt}>{values.prompt}</Textarea>
                     </Box>
                   </Box>
 
