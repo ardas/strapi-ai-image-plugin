@@ -10,6 +10,8 @@ import { useIntl } from 'react-intl'
 import getTrad from '../../utils/getTrad'
 import Modal from '../GenerationModal'
 import { request, useFetchClient, CheckPermissions } from '@strapi/helper-plugin'
+import pluginPkg from '../../../../package.json';
+const pluginName = pluginPkg.strapi.name;
 
 const ActionLayout = () => {
   const { formatMessage } = useIntl()
@@ -75,7 +77,7 @@ const ActionLayout = () => {
   }
 
   return (
-    <CheckPermissions permissions={[{action: 'plugin::ai-image-generation.generate', subject: null}]}>
+    <CheckPermissions permissions={[{action: `plugin::${pluginName}.generate`, subject: null}]}>
       <Box
         background="neutral0"
         borderColor="neutral150"
@@ -86,7 +88,7 @@ const ActionLayout = () => {
         paddingTop={6}
         shadow="tableShadow"
       >
-        <Typography variant="sigma" textColor="neutral600" id="ai">
+        <Typography variant="sigma" textColor="neutral600" id={pluginName}>
           {formatMessage({
             id: getTrad('Plugin.name'),
             defaultMessage: 'AI Image Generation',
