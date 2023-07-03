@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import pluginPkg from '../../../../package.json';
 import {
   Button,
   TextInput,
@@ -16,6 +17,7 @@ import { Formik } from 'formik';
 import { request, Form } from '@strapi/helper-plugin'
 import { configSchema as validationSchema } from '../../utils/imageConfigSchema'
 import getTrad from '@strapi/plugin-upload/admin/src/utils/getTrad';
+const pluginName = pluginPkg.strapi.name;
 
 const ImageForm = ({ onSubmit }) => {
   const { formatMessage } = useIntl();
@@ -29,7 +31,7 @@ const ImageForm = ({ onSubmit }) => {
   });
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    request(`/strapi-ai-image-plugin/config/image`, { method: 'GET' })
+    request(`/${pluginName}/config/image`, { method: 'GET' })
       .then((res) => {
         if(!_.isEmpty(res)) {
           setFormData(res)
@@ -41,7 +43,7 @@ const ImageForm = ({ onSubmit }) => {
 
   const handleSubmit = (data) => {
     setLoading(true)
-    request(`/strapi-ai-image-plugin/config/image`, {
+    request(`/${pluginName}/config/image`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: data,

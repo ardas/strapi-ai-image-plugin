@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from '@strapi/design-system/v2';
 import PropTypes from 'prop-types';
+import pluginPkg from '../../../../package.json';
 import {
   Box,
   ModalFooter,
@@ -31,6 +32,7 @@ import { Formik } from 'formik';
 import { generationSchema as validationSchema } from '../../utils/imageConfigSchema'
 import { base64ImagesToBlobs, blobsToAssets } from '../../utils/blob'
 import getTrad from '@strapi/plugin-upload/admin/src/utils/getTrad';
+const pluginName = pluginPkg.strapi.name;
 
 const UploadForm = ({ onClose, onAddAssets }) => {
   const [checkedImages, setCheckedImages] = useState([])
@@ -49,7 +51,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
   });
 
   const updateBalance = () => {
-    request(`/strapi-ai-image-plugin/image/balance`, { method: 'GET' })
+    request(`/${pluginName}/image/balance`, { method: 'GET' })
       .then((res) => {
         if(!_.isEmpty(res)) {
           setBalance(res.balance)
@@ -62,7 +64,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
 
   useEffect(() => {
     updateBalance()
-    request(`/strapi-ai-image-plugin/config/image`, { method: 'GET' })
+    request(`/${pluginName}/config/image`, { method: 'GET' })
       .then((res) => {
         if(!_.isEmpty(res)) {
           setFormData({
@@ -96,7 +98,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
   const handleSubmit = async (data) => {
     setLoading(true);
 
-    request(`/strapi-ai-image-plugin/image/generate`, {
+    request(`/${pluginName}/image/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: data,
