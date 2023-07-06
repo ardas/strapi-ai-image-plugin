@@ -24,7 +24,11 @@ module.exports = {
 
     //TODO: prepare prompts
 
-    return imageService.generate(ctx.request.body, apiKey)
+    try {
+      return await imageService.generate(ctx.request.body, apiKey)
+    } catch (e) {
+      return ctx.send({ error: e.message }, 400)
+    }
   },
   async balance(ctx) {
     const settingsService = getService('settings')

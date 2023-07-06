@@ -96,7 +96,8 @@ const UploadForm = ({ onClose, onAddAssets }) => {
 
 
   const handleSubmit = async (data) => {
-    setLoading(true);
+    setLoading(true)
+    setError(false)
 
     request(`/${pluginName}/image/generate`, {
       method: 'POST',
@@ -108,7 +109,8 @@ const UploadForm = ({ onClose, onAddAssets }) => {
         updateBalance()
         setLoading(false)
       })
-      .catch(() => {
+      .catch((e) => {
+        setError(e?.response?.payload?.error ?? 'Unknown error')
         setLoading(false)
       })
   };

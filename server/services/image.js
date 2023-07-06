@@ -1,5 +1,6 @@
 'use strict'
 const fetch = require('node-fetch')
+const { ValidationError } = require('@strapi/utils').errors;
 
 module.exports = ({ strapi }) => ({
   async getBalance (apiKey) {
@@ -34,8 +35,12 @@ module.exports = ({ strapi }) => ({
     })
 
     const {
-      artifacts,
+      artifacts, message
     } = await response.json()
+
+    if (response.status === 429 && message !== undefined) {
+      throw new ValidationError(message);
+    }
 
     return { images: artifacts.map((i) => i.base64) }
   },
