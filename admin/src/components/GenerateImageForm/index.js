@@ -58,7 +58,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
         }
       })
       .catch(() => {
-        setError(<>Can't get balance, please check your API key in <Link href={`/admin/settings/${pluginName}/image-generation`}>config section</Link></>)
+        setError(<>Can't get balance, please check your API key in <Link isExternal={false} href={`/admin/settings/${pluginName}/image-generation`}>config section</Link></>)
       })
   }
 
