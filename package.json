@@ -1,6 +1,6 @@
 {
   "name": "strapi-ai-image-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generate images using AI.",
   "strapi": {
     "name": "strapi-ai-image-plugin",
