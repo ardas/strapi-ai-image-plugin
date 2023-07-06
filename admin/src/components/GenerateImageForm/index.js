@@ -119,14 +119,14 @@ const UploadForm = ({ onClose, onAddAssets }) => {
     <>
       { error && (
         <ContentLayout>
-          <Box padding={8}>
+          <Box padding={3}>
             <Alert title="Error!" variant="danger">{ error }</Alert>
           </Box>
         </ContentLayout>
       ) }
         { !error && !generated.length && (
           <>
-            <Box padding={6} background="neutral200">
+            <Box padding={3} background="neutral200">
               <Typography fontWeight="bold" textColor="neutral800" as="h2">
                 Configure parameters and generate a picture
               </Typography>
@@ -140,7 +140,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
             >
               {({ values, errors, handleChange }) => (
                 <Form noValidate>
-                  <Box padding={2}>
+                  <Box padding={1}>
                     <Badge>Credits: { balance }</Badge>
                   </Box>
                   <Box padding={2}>
