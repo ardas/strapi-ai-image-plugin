@@ -72,6 +72,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
             width: res.width,
             cfgScale: res.cfgScale,
             samples: res.samples,
+            style: res.style,
           })
         }
       })
