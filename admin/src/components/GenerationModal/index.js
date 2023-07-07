@@ -24,7 +24,7 @@ const Modal = ({ onClose, onAddAssets, showSuccess }) => {
         </ModalHeader>
         <ModalBody>
           { showSuccess && (
-            <Alert closeLabel="Close alert" title="Success" variant="success">Now you can find the generated images in the "ai" media library folder</Alert>
+            <Alert onClose={onClose} closeLabel="Close alert" title="Success" variant="success">Now you can find the generated images in the "ai" media library folder</Alert>
           ) }
           { !showSuccess && (
             <GenerationForm onAddAssets={onAddAssets} onClose={onClose}></GenerationForm>

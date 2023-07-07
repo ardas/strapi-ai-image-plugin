@@ -121,7 +121,7 @@ const UploadForm = ({ onClose, onAddAssets }) => {
       { error && (
         <ContentLayout>
           <Box padding={3}>
-            <Alert title="Error!" variant="danger">{ error }</Alert>
+            <Alert onClose={onClose} title="Error!" variant="danger">{ error }</Alert>
           </Box>
         </ContentLayout>
       ) }
