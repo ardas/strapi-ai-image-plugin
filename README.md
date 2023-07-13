@@ -1,15 +1,48 @@
 # Strapi plugin strapi-ai-image-plugin
 
-This plugin allows you to generate images using the "stability.ai" API and store it to media library.
+## Features
+```
+Generation using "stability.ai"
+Permission for generation
+```
 
-For generating image go to any collection or single type edit page and in right section press "generate" button.
+## Installation
 
-Plugin provides permission for generation.
+To install this plugin, you need to add an NPM dependency to your Strapi application.
 
-Dependant on strapi default upload plugin.
+```sh
+# Using Yarn
+yarn add strapi-ai-image-plugin
 
+# Or using NPM
+npm install strapi-ai-image-plugin
+```
 
-# Quick start
+`./config/plugins.js`
 
-Go to the settings -> Ai Image Generation section. Insert your stability.ai API key and configure default parameters.
-Press "Generate" button in any collection or single type edit page. Then select generated image on needed image field and select generated image from "ai" folder.
+## Plugin Configuration
+
+```js
+module.exports = ({ env }) => ({
+  // ...
+  'strapi-ai-image-plugin': {
+    enabled: true
+  },
+  // ...
+});
+```
+
+## API Configuration
+```
+1. Go to the settings 
+2. Ai Image Generation section. 
+3. Insert your stability.ai API key and configure default parameters.
+```
+
+## Image generation
+
+```
+On any collection or single type press "generate" button on the right side.
+Fill all appropriate fields and select interested image.
+Use generated image in upload library "ai" page
+```
